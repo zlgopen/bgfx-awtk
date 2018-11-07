@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "nanovg.h"
-
+#define  WITH_NANOVG_GL
 #ifdef WITH_NANOVG_GL
 #include <stdio.h>
 #include <memory.h>
