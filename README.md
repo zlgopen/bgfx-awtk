@@ -8,6 +8,7 @@ bgfx用在awtk平台的版本
 * 2.nanovg <---> awtk/3rd/nanovg
 * 3.SConstruct <---> awtk/SConstruct
 * 4.SConscript <---> awtk/3rd/bgfx/SConscript
+* 5.src <---> awtk/src
 
 ##bgfx对应bx和bimg版本
 

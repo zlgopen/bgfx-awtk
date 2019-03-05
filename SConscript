@@ -12,7 +12,9 @@ BgCppPath=['bx/3rdparty',
 		'bimg/include',
 		'bgfx/3rdparty',
 		'bgfx/3rdparty/khronos',
-		'bgfx/include']
+       	'bimg/3rdparty/astc-codec',
+        'bimg/3rdparty/astc-codec/include',
+        'bgfx/include']
 BgSources=[
 		'bx/src/allocator.cpp',
 		'bx/src/bx.cpp',
@@ -58,13 +60,15 @@ BgSources=[
 		'bgfx/src/topology.cpp',
 		'bgfx/src/vertexdecl.cpp'
 		]
+BgSources += Glob('bimg/3rdparty/astc-codec/src/decoder/*.cc')
 
 if OS_NAME == 'Windows':
-	BgCppPath= BgCppPath + ['bx/include/compat/msvc','bgfx/3rdparty/dxsdk/include']
+  CCFLAGS = CCFLAGS + ' /std:c++14 ';
+  BgCppPath = BgCppPath + ['bx/include/compat/msvc','bgfx/3rdparty/dxsdk/include']
 elif OS_NAME == 'Darwin':
-	CCFLAGS = CCFLAGS + '-std=c++11 ';
-	BgCppPath= BgCppPath + ['bx/include/compat/osx']
-	BgSources= BgSources + ['bgfx/src/renderer_mtl.mm']
-	
+  CCFLAGS = CCFLAGS + ' -std=c++14 '
+  BgCppPath= BgCppPath + ['bx/include/compat/osx']
+  BgSources= BgSources + ['bgfx/src/renderer_mtl.mm']
+        
 env.Library(os.path.join(LIB_DIR, 'bgfx'), BgSources, CPPPATH = BgCppPath,CCFLAGS = CCFLAGS)
 
